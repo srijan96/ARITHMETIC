@@ -443,3 +443,18 @@ lint **randlistI(int m,int n) {
 	for(i=0;i<m;++i) list[i]=randoneI(n);
 	return list;
 }
+lint *sqroot(lint *n)
+{
+    lint *temp = createI(n->length);
+    lint *temp2 = createI(n->length);
+    lint *unity = convertI("1");
+    if(n->sign == MINUS)
+        return temp;
+    while(compareI(temp2,n)<= 0)
+    {
+        temp = shrinkI(additionI(temp,unity));
+        temp2 = multiplicationI(temp,temp);
+    }
+    temp = shrinkI(additionI(temp,negateI(unity)));
+    return temp;
+}
